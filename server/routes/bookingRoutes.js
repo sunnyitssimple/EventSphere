@@ -1,0 +1,10 @@
+import { Router } from "express";
+import * as c from "../controllers/bookingController.js";
+import { protect, adminOnly } from "../middleware/auth.js";
+const r = Router();
+r.use(protect);
+r.post("/pay", c.pay);
+r.get("/mine", c.myBookings);
+r.put("/:id/cancel", c.cancelBooking);
+r.put("/checkin", adminOnly, c.checkIn);
+export default r;
