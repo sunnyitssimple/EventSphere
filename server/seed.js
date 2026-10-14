@@ -20,7 +20,7 @@ const ev = (title, category, city, venue, days, price, seats, popularity, descri
 await mongoose.connect(process.env.MONGO_URI);
 await Promise.all([User.deleteMany(), Event.deleteMany(), Booking.deleteMany(), Review.deleteMany()]);
 
-await User.create({ name: "Admin", email: "admin@eventhub.com", password: await bcrypt.hash("admin123", 10), role: "admin" });
+await User.create({ name: "Admin", email: "admin@eventsphere.com", password: await bcrypt.hash("admin123", 10), role: "admin" });
 const priya = await User.create({ name: "Priya Raman", email: "priya@example.com", password: await bcrypt.hash("demo1234", 10), interests: ["Music", "Comedy", "Tech"] });
 const arjun = await User.create({ name: "Arjun Mehta", email: "arjun@example.com", password: await bcrypt.hash("demo1234", 10), interests: ["Tech", "Sports"] });
 
@@ -151,6 +151,6 @@ for (const title of [...new Set(demo.map((r) => r.title))]) {
   await Event.findByIdAndUpdate(event._id, { avgRating: Math.round(avg * 10) / 10, reviewCount: revs.length });
 }
 
-console.log("Seeded. Admin: admin@eventhub.com / admin123");
+console.log("Seeded. Admin: admin@eventsphere.com / admin123");
 console.log("Demo users: priya@example.com / demo1234, arjun@example.com / demo1234");
 process.exit(0);
